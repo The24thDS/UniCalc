@@ -1,3 +1,35 @@
 .header {
-    height: 10vh;
+    height: 10.35vh;
+    background-color: var(--header-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+.wrapperAddon{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.title{
+    color: var(--form-bg);
+    font-size: 50px;
+    font-family: 'Open Sans', sans-serif
+}
+.themes{
+    display: flex;
+    width: 10%;
+    justify-content: space-around;
+    font-family: 'Lato', sans-serif;
+    font-size: 18px;
+}
+.themes div{
+    cursor: pointer;
+    padding: 10px;
+}
+.themes div:first-child:hover{
+    background-color: white;
+}
+.themes div:last-child:hover{
+    background-color: black;
+    color: white;
 }

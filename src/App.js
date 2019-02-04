@@ -12,21 +12,24 @@ class App extends Component {
       average: 0
     }
   }
-  passInfo = (formState, average) =>
+  passInfo = (marks, average) =>
   {
     this.setState({
-      data: formState,
+      data: marks,
       average: average
-    },()=>console.log(this.state))
+    })
   }
   render() {
     const {data, average} = this.state;
     return (
-      <div className="App">
+      <div className={styles.app}>
         <Header/>
-        <section className={`${styles.section} w100 flex justify-around items-center`}>
-          <Form passInfo={this.passInfo}/>
-          <Output chartData={data} average={average}/>
+        <section className={styles.section}>
+          <div className={`wrapper ${styles.wrapperAddon}`}>
+            <Form passInfo={this.passInfo}/>
+            <Output chartData={data} average={average}/>
+            <q>I would say our best <br/> time is now!</q>
+          </div>
         </section>
       </div>
     );

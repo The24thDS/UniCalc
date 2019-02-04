@@ -1,4 +1,20 @@
 .section{
     height: 90vh;
-    background-color: #009D76;
+    background-color: var(--page-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+.wrapperAddon{
+    display: grid;
+    grid-template-columns: 34% 66%;
+    column-gap: 16px;
+}
+.section q{
+    font-size: 70px;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    justify-self: left;
+    text-indent: -50px;
+    padding-left: 200px;
 }

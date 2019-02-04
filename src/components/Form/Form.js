@@ -1,69 +1,70 @@
 import React from 'react';
 import Input from './Input';
+import styles from './Form.module.css';
+
 const inputsData = {
-    nume: {
-        type: 'text',
-        required: false,
-        text: 'Nume și prenume',
-        credite: 0
-    },
     mates2: {
         type: 'number',
-        required: true,
         text: 'Matematici Speciale II',
         credite: 3
     },
 	meto: {
         type: 'number',
-        required: true,
         text: 'Metode Numerice',
         credite: 4
     },
 	sd: {
         type: 'number',
-        required: true,
-        text: 'Structuri de date',
+        text: 'Structuri de Date',
         credite: 4
     },
 	deea: {
         type: 'number',
-        required: true,
-        text: 'DEEA / DCE',
+        text: 'Dispozitive Electronice și Electronică Analogică',
         credite: 4
     },
 	poo1: {
         type: 'number',
-        required: true,
-        text: 'POO I',
+        text: 'Programare Orientată pe Obiecte',
         credite: 5
     },
 	lupu1: {
         type: 'number',
-        required: true,
-        text: 'Arhictectura calculatoarelor',
+        text: 'Arhictectura Calculatoarelor',
         credite: 4
     },
 	eg: {
         type: 'number',
-        required: true,
-        text: 'Elemente de grafică',
+        text: 'Elemente de Grafică',
         credite: 4
     },
 	en3: {
         type: 'number',
-        required: true,
         text: 'Limba Engleză III',
         credite: 2
     },
     submit: {
         type: 'submit',
-        required: false,
         text: 'Calculează',
         credite: 0
     }
 }
 let credite = Object.keys(inputsData).reduce((acc, key)=>acc+inputsData[key].credite, 0);
 class Form extends React.Component {
+    constructor(props)
+    {
+        super(props);
+        this.state = {
+            mates2: 0,
+            meto: 0,
+            sd: 0,
+            deea: 0,
+            poo1: 0,
+            lupu1: 0,
+            eg: 0,
+            en3: 0
+        }
+    }
     recordInput = (event) => {
         this.setState({
             [event.target.name]: isNaN(Number(event.target.value))?event.target.value:Number(event.target.value)
@@ -73,24 +74,24 @@ class Form extends React.Component {
         event.preventDefault();
         const sum = Object.keys(this.state).reduce((acc, key)=>acc+(this.state[key]*inputsData[key].credite), 0);
         const pAverage = sum / credite;
-        this.props.passInfo(this.state, pAverage);
+        this.props.passInfo(Object.values(this.state), pAverage);
     }
     render(){
-        return <form className="flex flex-column w-25 f4">
-        {Object.keys(inputsData).map((key)=>{
-            return (
-                <Input 
-                    name={key} 
-                    type={inputsData[key].type} 
-                    required={inputsData[key].required} 
-                    text={inputsData[key].text} 
-                    className="flex justify-between pa2"
-                    key={key}
-                    recordInput={this.recordInput}
-                    submitInput={this.submit}
-                />
-            )
-        })}
+        return <form className={styles.form}>
+            <div>
+                {Object.keys(inputsData).map((key)=>{
+                    return (
+                        <Input 
+                            name={key} 
+                            type={inputsData[key].type}
+                            text={inputsData[key].text}
+                            key={key}
+                            recordInput={this.recordInput}
+                            submitInput={this.submit}
+                        />
+                    )
+                })}
+            </div>
         </form>
     }
 };
