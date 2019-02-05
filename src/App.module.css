@@ -14,7 +14,28 @@
     font-size: 70px;
     grid-column-start: 1;
     grid-column-end: 3;
-    justify-self: left;
+    justify-self: center;
     text-indent: -50px;
-    padding-left: 200px;
+}
+@media screen and (max-width: 1000px){
+    .wrapperAddon{
+        grid-template-columns: 34% 66%;
+    }
+}
+@media screen and (max-width: 850px){
+    .section{
+        padding-top: 16px;
+        height: auto;
+    }
+    .wrapperAddon{
+        grid-template-columns: 100%;
+        row-gap: 16px;
+    }
+    .section q{
+        font-size: 5vw;
+        grid-column-start: 1;
+        grid-column-end: 2;
+        padding-left: 0;
+        padding-bottom: 14px;
+    }
 }
