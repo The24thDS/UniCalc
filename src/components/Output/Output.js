@@ -29,14 +29,15 @@ const Output = ({chartData, average}) => {
         }
         const scale = {
             ticks: {
-            suggestedMin: 0,
-            suggestedMax: 10,
-            stepSize: 1
+                suggestedMin: 0,
+                suggestedMax: 10,
+                stepSize: 1,
+                display: false
             },
             pointLabels: {
-            display: true,
-            fontColor: '#000',
-            fontSize: 16
+                display: true,
+                fontColor: '#000',
+                fontSize: 12
             }
         }
         const options = {
@@ -44,7 +45,7 @@ const Output = ({chartData, average}) => {
             responsive: true,
             aspectRatio: 1,
             layout: {
-            padding: 10,
+                padding: 10,
             },
             scale: scale,
             legend: { display: false },

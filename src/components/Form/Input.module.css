@@ -1,7 +1,6 @@
 .label{
     display: flex;
     justify-content: space-between;
-    font-family: 'Lato', sans-serif;
     font-size: 14px;
     align-items: center;
 }
@@ -17,16 +16,16 @@
 }
 .submit{
     position: absolute;
-    width: 220px;
-    height: 220px;
+    width: 12vw;
+    height: 12vw;
     border: none;
     cursor: pointer;
-    left: -180px;
-    bottom: -130px;
+    left: -8vw;
+    bottom: -9vw;
     box-shadow: 3px 3px 15px rgba(0,0,0,.5);
     transition: all 1s;
     background: url("./calculator.svg") var(--button-bg);
-    background-size: 200px 200px;
+    background-size: 10vw 10vw;
     background-repeat: no-repeat;
     background-position: center center;
 }
@@ -36,4 +35,42 @@
 }
 .submit input{
     display: none;
+}
+
+@media screen and (max-width: 1600px){
+    .submit{
+        width: 100%;
+        height: 10%;
+        left: 0;
+        bottom: 0;
+        background: var(--button-bg);
+        box-shadow: 5px 5px 10px rgba(0,0,0,.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .submit input{
+        display: flex;
+        background: none;
+        border:none;
+        color: var(--page-bg);
+        font-size: 24px;
+        cursor: pointer;
+        transition: all 1s;
+    }
+    .submit input:hover{
+        color: var(--header-bg);
+        transition: all 1s;
+    }
+}
+@media screen and (max-width: 1200px)
+{
+    .label{
+        font-size: 12px;
+    }
+}
+@media screen and (max-width: 850px){
+    .label{
+        font-size: 16px;
+    }
 }
