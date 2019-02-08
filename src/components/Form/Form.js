@@ -3,34 +3,9 @@ import Input from './Input';
 import styles from './Form.module.css';
 
 const inputsData = {
-    mates2: {
-        type: 'number',
-        text: 'Matematici Speciale II',
-        credite: 3
-    },
-	meto: {
-        type: 'number',
-        text: 'Metode Numerice',
-        credite: 4
-    },
-	sd: {
-        type: 'number',
-        text: 'Structuri de Date',
-        credite: 4
-    },
 	deea: {
         type: 'number',
         text: 'Dispozitive Electronice și Electronică Analogică',
-        credite: 4
-    },
-	poo1: {
-        type: 'number',
-        text: 'Programare Orientată pe Obiecte',
-        credite: 5
-    },
-	lupu1: {
-        type: 'number',
-        text: 'Arhictectura Calculatoarelor',
         credite: 4
     },
 	eg: {
@@ -42,6 +17,31 @@ const inputsData = {
         type: 'number',
         text: 'Limba Engleză III',
         credite: 2
+    },
+    mates2: {
+        type: 'number',
+        text: 'Matematici Speciale II',
+        credite: 3
+    },
+	meto: {
+        type: 'number',
+        text: 'Metode Numerice',
+        credite: 4
+    },
+	poo1: {
+        type: 'number',
+        text: 'Programare Orientată pe Obiecte I',
+        credite: 5
+    },
+	lupu1: {
+        type: 'number',
+        text: ' Structura și organizarea calculatoarelor',
+        credite: 4
+    },
+	sd: {
+        type: 'number',
+        text: 'Structuri de Date',
+        credite: 4
     },
     submit: {
         type: 'submit',
