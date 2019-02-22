@@ -28,16 +28,16 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    <!-- Matomo opt-out window-->
+    <div class="optout">
+      <div class="close" onclick="(()=>{document.querySelector('.optout').style='display:none'})()">❌</div>
+      <p>I am using a self-hosted Matomo instance.</p>
+      <p>Your data never gets to Google, is never used for advertisements and never sold to third parties.</p>
+      <p>You can <span class="choiceButton">opt-out</span></p>
+      <link rel="stylesheet" href="./matomo/optout.css">
+      <script src="./matomo/tracking.js"></script>
+    </div>
+    <!-- End Matomo Opt-Out Window Code -->
     <!-- Matomo -->
     <script type="text/javascript">
       var _paq = window._paq || [];
