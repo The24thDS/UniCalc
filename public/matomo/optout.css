@@ -4,11 +4,16 @@
     bottom: 10px;
     z-index: 4;
     background-color: rgba(255, 255, 255, .8);
+    color: black;
     border-radius: 2px;
     width: 400px;
     padding: 10px 10px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 600
+}
+body.black .optout {
+    background-color: rgba(0, 0, 0, .8);
+    color: white;
 }
 
 .optout .close {

@@ -29,6 +29,7 @@
 }
 .themes div:first-child:hover{
     background-color: white;
+    color: black;
 }
 .themes div:last-child:hover{
     background-color: black;
