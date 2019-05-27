@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://the24thds.github.io/UniCalc",
   "dependencies": {
-    "chart.js": "^2.7.3",
+    "chart.js": "^2.8.0",
     "chartjs": "^0.3.24",
     "gh-pages": "^2.0.1",
     "react": "^16.8.6",
