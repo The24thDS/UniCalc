@@ -5,17 +5,39 @@
     justify-content: center;
     align-items: center
 }
-.wrapperAddon{
+.wrapperAddon {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 1300px;
 }
-.title{
+.title {
     color: var(--form-bg);
     font-size: 50px;
     font-family: 'Open Sans', sans-serif
 }
+
+.menu {
+    display: flex;
+}
+
+.menu span {
+    cursor: pointer;
+    padding: 8px 15px;
+    margin: 0 10px;
+}
+
+span:hover {
+    background: black;
+    color: white;
+}
+
+span.active {
+    background: black;
+    color: white;
+    cursor: default;
+}
+
 @media screen and (max-width: 1325px){
     .wrapperAddon{
         width: 80%;
