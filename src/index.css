@@ -20,14 +20,6 @@ body {
   color: var(--main-text);
   background-color: var(--page-bg)
 }
-body.black{
-  --form-bg: #2d7894;
-  --placeholder-text: #d8d8d8;
-  --button-bg: #d8d8d8;
-  --main-text: #fff;
-  --header-bg: #000;
-  --page-bg: #2c2c2c;
-}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
