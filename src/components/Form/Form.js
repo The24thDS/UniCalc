@@ -8,7 +8,6 @@ class Form extends React.Component {
     {
         super(props);
         const subjects = Object.values(this.props.inputsData)
-        console.log(subjects)
         this.state = {
             [subjects[0].text]: 0,
             [subjects[1].text]: 0,

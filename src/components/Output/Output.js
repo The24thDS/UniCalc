@@ -3,7 +3,6 @@ import {Radar} from 'react-chartjs-2';
 import styles from './Output.module.css';
 
 const Output = ({chartData, average}) => {
-    console.log(chartData)
     if(average)
     {
         const pointColors = ['#ff3900','#33658a','#86bbd8','#2f4858','#f6ae2d','#01fdf6','#cbbaed','#e9df00']
