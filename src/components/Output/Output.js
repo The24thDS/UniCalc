@@ -3,13 +3,14 @@ import {Radar} from 'react-chartjs-2';
 import styles from './Output.module.css';
 
 const Output = ({chartData, average}) => {
+    console.log(chartData)
     if(average)
     {
         const pointColors = ['#ff3900','#33658a','#86bbd8','#2f4858','#f6ae2d','#01fdf6','#cbbaed','#e9df00']
         const data = {
             datasets: [
                 {
-                    data: chartData,
+                    data: Object.values(chartData),
                     label: 'Nota',
                     backgroundColor: '#03fcba99',
                     borderColor: '#989898',
@@ -22,7 +23,7 @@ const Output = ({chartData, average}) => {
                     pointHoverRadius: 7
                 }
             ],
-            labels: ['Matematici speciale', 'Metode numerice', 'Structuri de date', 'DEEA', 'POO', 'Arhitectura calculatoarelor', 'Elemente de grafică', 'Limba Engleză']
+            labels: Object.keys(chartData)
         }
         const style = {
             displayColors: true

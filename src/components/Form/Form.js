@@ -7,16 +7,17 @@ class Form extends React.Component {
     constructor(props)
     {
         super(props);
-        const subjects = Object.keys(this.props.inputsData)
+        const subjects = Object.values(this.props.inputsData)
+        console.log(subjects)
         this.state = {
-            [subjects[0]]: 0,
-            [subjects[1]]: 0,
-            [subjects[2]]: 0,
-            [subjects[3]]: 0,
-            [subjects[4]]: 0,
-            [subjects[5]]: 0,
-            [subjects[6]]: 0,
-            [subjects[7]]: 0
+            [subjects[0].text]: 0,
+            [subjects[1].text]: 0,
+            [subjects[2].text]: 0,
+            [subjects[3].text]: 0,
+            [subjects[4].text]: 0,
+            [subjects[5].text]: 0,
+            [subjects[6].text]: 0,
+            [subjects[7].text]: 0
         }
     }
     recordInput = (event) => {
@@ -26,10 +27,11 @@ class Form extends React.Component {
     }
     submit = (event) => {
         event.preventDefault();
+        const subjects = Object.values(this.props.inputsData)
         const credite = Object.keys(this.props.inputsData).reduce((acc, key)=>acc+this.props.inputsData[key].credite, 0);
-        const sum = Object.keys(this.state).reduce((acc, key)=>acc+(this.state[key]*this.props.inputsData[key].credite), 0);
+        const sum = Object.keys(this.state).reduce((acc, key, idx)=>acc+(this.state[key]*subjects[idx].credite), 0);
         const pAverage = sum / credite;
-        this.props.passInfo(Object.values(this.state), pAverage);
+        this.props.passInfo(this.state, pAverage);
     }
 
     render(){
@@ -39,7 +41,7 @@ class Form extends React.Component {
                 {Object.keys(inputsData).map((key)=>{
                     return (
                         <Input 
-                            name={key} 
+                            name={inputsData[key].text} 
                             type={inputsData[key].type}
                             text={inputsData[key].text}
                             key={key}
