@@ -9,7 +9,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 1300px;
+  width: 50%;
 }
 .title {
   color: var(--form-bg);
@@ -38,10 +38,4 @@
   background: black;
   color: white;
   cursor: default;
-}
-
-@media screen and (max-width: 1325px) {
-  .wrapperAddon {
-    width: 80%;
-  }
 }
