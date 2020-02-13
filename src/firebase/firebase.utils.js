@@ -1,30 +1,36 @@
 import * as firebase from "firebase/app";
 import "firebase/firestore";
+import "firebase/analytics";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAjQd_8LAmC1wVySrmHhf4rTkwyo-LEY_I",
-  authDomain: "unicalc-7ca38.firebaseapp.com",
-  databaseURL: "https://unicalc-7ca38.firebaseio.com",
-  projectId: "unicalc-7ca38",
-  storageBucket: "unicalc-7ca38.appspot.com",
-  messagingSenderId: "357188087822",
-  appId: "1:357188087822:web:51317b41d3865f29"
+  apiKey: "AIzaSyCc9730aqq9UNRMAqGMVQm8ACJvs3UVepI",
+  authDomain: "unicalc2.firebaseapp.com",
+  databaseURL: "https://unicalc2.firebaseio.com",
+  projectId: "unicalc2",
+  storageBucket: "unicalc2.appspot.com",
+  messagingSenderId: "171403314479",
+  appId: "1:171403314479:web:e39fc8ffd865c24b9e8dda",
+  measurementId: "G-HYZJNYEYXC"
 };
+
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+firebase.analytics();
 
 const firestore = firebase.firestore();
 
-export const getSemesters = async () => {
+export const getSemester = async semesterId => {
   const collectionRef = firestore.collection("semesters");
-  const snapShot = await collectionRef.get();
-
-  const semesters = snapShot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-  return semesters;
+  const docRef = collectionRef.doc(semesterId);
+  const snapshot = await docRef.get();
+  if (snapshot.exists) {
+    return snapshot.data();
+  } else return null;
 };
 
-export const addSemesterAndSubjects = (semester, year, subjects) => {
+export const createSemesterWithSubjects = (subjects, name) => {
   const collectionRef = firestore.collection("semesters");
   const newDocRef = collectionRef.doc();
-  newDocRef.set({ semester, year, subjects });
+  newDocRef.set({ subjects, name });
+  return newDocRef.id;
 };
