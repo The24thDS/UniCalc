@@ -1,66 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
+import PropTypes from "prop-types";
 import Input from "./Input";
 import styles from "./Form.module.css";
 
-class Form extends React.Component {
-  constructor(props) {
-    super(props);
-    const { inputsData } = this.props;
-    const subjects = inputsData.subjects;
-    this.state = {
-      [subjects[0].name]: 0,
-      [subjects[1].name]: 0,
-      [subjects[2].name]: 0,
-      [subjects[3].name]: 0,
-      [subjects[4].name]: 0,
-      [subjects[5].name]: 0,
-      [subjects[6].name]: 0,
-      [subjects[7].name]: 0
-    };
-  }
-  recordInput = event => {
-    this.setState({
-      [event.target.name]: isNaN(Number(event.target.value))
-        ? event.target.value
-        : Number(event.target.value)
-    });
-  };
-  submit = event => {
-    event.preventDefault();
-    const { inputsData } = this.props;
-    const subjects = inputsData.subjects;
-    const credite = Object.keys(this.props.inputsData).reduce(
-      (acc, key) => acc + this.props.inputsData[key].credite,
-      0
-    );
-    const sum = Object.keys(this.state).reduce(
-      (acc, key, idx) => acc + this.state[key] * subjects[idx].credite,
-      0
-    );
-    const pAverage = sum / credite;
-    this.props.passInfo(this.state, pAverage);
-  };
+const Form = ({ subjects, semesterName, setGrades }) => {
+  const [state, setState] = useState({});
+  return (
+    <div className={styles.form}>
+      <h1>{semesterName}</h1>
+      <div>
+        {subjects.map((subjectName, index) => {
+          const name = index + subjectName.replace(/ /g, "");
+          return (
+            <Input
+              key={name}
+              name={name}
+              type="number"
+              text={subjectName}
+              value={state[name]}
+              onChange={({ target }) => {
+                setState(prevState => ({
+                  ...prevState,
+                  [target.name]: Number(target.value)
+                }));
+              }}
+            />
+          );
+        })}
+        <Input type="submit" onClick={() => setGrades(Object.values(state))} />
+      </div>
+    </div>
+  );
+};
 
-  render() {
-    const { inputsData } = this.props;
-    return (
-      <form className={styles.form}>
-        <div>
-          {inputsData.subjects.map((subject, idx) => {
-            return (
-              <Input
-                name={subject.name}
-                type="text"
-                text={subject.name}
-                key={idx}
-                recordInput={this.recordInput}
-                submitInput={this.submit}
-              />
-            );
-          })}
-        </div>
-      </form>
-    );
-  }
-}
+Form.propTypes = {
+  subjects: PropTypes.arrayOf(PropTypes.string).isRequired,
+  semesterName: PropTypes.string.isRequired,
+  setGrades: PropTypes.func.isRequired
+};
+
 export default Form;
