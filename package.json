@@ -2,7 +2,6 @@
   "name": "uni-calc",
   "version": "0.5.0",
   "private": true,
-  "homepage": "https://the24thds.github.io/UniCalc",
   "dependencies": {
     "chart.js": "^2.8.0",
     "firebase": "^7.8.1",
