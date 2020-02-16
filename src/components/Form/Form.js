@@ -27,7 +27,11 @@ const Form = ({ subjects, semesterName, setGrades }) => {
             />
           );
         })}
-        <Input type="submit" onClick={() => setGrades(Object.values(state))} />
+        <Input
+          type="submit"
+          text="Calculează"
+          onClick={() => setGrades(Object.values(state))}
+        />
       </div>
     </div>
   );
