@@ -11,7 +11,7 @@ const Input = ({ name, type, text, onChange, onClick }) => {
           className={styles.input}
           name={name}
           min="1"
-          placeholder={Math.floor(Math.random() * 10 + 1)}
+          placeholder="5"
           max="10"
           type={type}
           required
