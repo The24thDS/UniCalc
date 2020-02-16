@@ -1,45 +1,41 @@
 .header {
-    height: 10.35vh;
-    background-color: var(--header-bg);
-    display: flex;
-    justify-content: center;
-    align-items: center
+  height: 10.35vh;
+  background-color: var(--header-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .wrapperAddon {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 1300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
 }
 .title {
-    color: var(--form-bg);
-    font-size: 50px;
-    font-family: 'Open Sans', sans-serif
+  color: var(--form-bg);
+  font-size: 50px;
+  font-family: "Open Sans", sans-serif;
 }
 
 .menu {
-    display: flex;
+  display: flex;
 }
 
-.menu span {
-    cursor: pointer;
-    padding: 8px 15px;
-    margin: 0 10px;
+.semester {
+  cursor: pointer;
+  padding: 8px 15px;
+  margin: 0 10px;
+  color: black;
+  text-decoration: none;
 }
 
-span:hover {
-    background: black;
-    color: white;
+.semester:hover {
+  background: black;
+  color: white;
 }
 
-span.active {
-    background: black;
-    color: white;
-    cursor: default;
-}
-
-@media screen and (max-width: 1325px){
-    .wrapperAddon{
-        width: 80%;
-    }
+.semester.active {
+  background: black;
+  color: white;
+  cursor: default;
 }

@@ -1,16 +1,18 @@
-.form{
-    display: flex;
-    flex-direction: column;
-    background-color: var(--form-bg);
-    height: 55vh;
-    align-items: center;
-    justify-content: center;
-    position: relative;
+.form {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--form-bg);
+  min-height: 55vh;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-width: 300px;
+  padding-bottom: 10%;
 }
-.form div{
-    width: 80%;
-    height: 80%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+.form div {
+  width: 80%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }

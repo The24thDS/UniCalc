@@ -1,15 +1,18 @@
-.output{
-    height: 55vh;
-    background-color: var(--header-bg);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    text-align: center;
+.output {
+  min-height: 55vh;
+  background-color: var(--header-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
 }
-@media screen and (max-width: 850px){
-    .output{
-        height: auto;
-        padding: 20px 0;
-    }
+.average {
+  font-size: 40px;
+}
+@media screen and (max-width: 850px) {
+  .output {
+    height: auto;
+    padding: 20px 0;
+  }
 }
