@@ -1,5 +1,4 @@
 import React, { useReducer } from "react";
-import PropTypes from "prop-types";
 import { useHistory } from "react-router-dom";
 import { createSemesterWithSubjects } from "../../firebase/firebase.utils";
 
@@ -15,7 +14,7 @@ const NewSemester = () => {
           ...state,
           subjects: {
             ...state.subjects,
-            [action.payload]: { name: "", credits: 0 }
+            [action.payload]: { name: "", credits: 1 }
           },
           nextSubjectId: state.nextSubjectId + 1
         };
@@ -54,8 +53,8 @@ const NewSemester = () => {
   const [state, dispatch] = useReducer(reducer, {
     nextSubjectId: 2,
     subjects: {
-      subject0: { name: "", credits: 0 },
-      subject1: { name: "", credits: 0 }
+      subject0: { name: "", credits: 1 },
+      subject1: { name: "", credits: 1 }
     },
     name: ""
   });
@@ -75,6 +74,7 @@ const NewSemester = () => {
               payload: { key: target.name, name: target.value }
             })
           }
+          required
         />
         <input
           type="number"
@@ -86,19 +86,40 @@ const NewSemester = () => {
               payload: { key: target.name, credits: target.value }
             })
           }
+          min="1"
+          max="10"
+          required
         />
       </span>
     ));
     return inputs;
   };
 
+  const validateInputs = () => {
+    let isValid = true;
+    if (state.name === "") {
+      isValid = false;
+    }
+    Object.values(state.subjects).forEach(subject => {
+      if (subject.name === "" || subject.credits < 1 || subject.credits > 10) {
+        isValid = false;
+      }
+    });
+    return isValid;
+  };
+
   const createNewSemester = e => {
     e.preventDefault();
-    const semesterId = createSemesterWithSubjects(
-      Object.values(state.subjects),
-      state.name
+    if (!validateInputs()) {
+      return false;
+    }
+    createSemesterWithSubjects(Object.values(state.subjects), state.name).then(
+      semesterId => {
+        if (semesterId) {
+          history.push("/semester/" + semesterId);
+        }
+      }
     );
-    history.push("/semester/" + semesterId);
   };
 
   return (
@@ -116,8 +137,16 @@ const NewSemester = () => {
             })
           }
           className={styles.subjectName}
+          required
         />
         <div className={styles.subjects}>
+          <div
+            className={styles.subject}
+            style={{ textAlign: "center", fontSize: "20px" }}
+          >
+            <span>Disciplină</span>
+            <span>Credite</span>
+          </div>
           {returnInputs()}
           <input
             type="button"
