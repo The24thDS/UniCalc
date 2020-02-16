@@ -54,10 +54,23 @@
   cursor: pointer;
 }
 .search .results {
+  width: 80%;
   flex-grow: 0.75;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   color: gray;
+}
+.search .result {
+  color: white;
+  text-decoration: none;
+  width: 100%;
+  background-color: var(--form-bg);
+  padding: 5px 10px;
+  margin-top: 5px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 45% 10% 45%;
+  justify-items: center;
 }

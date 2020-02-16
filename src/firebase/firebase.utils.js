@@ -28,9 +28,41 @@ export const getSemester = async semesterId => {
   } else return null;
 };
 
-export const createSemesterWithSubjects = (subjects, name) => {
+export const createSemesterWithSubjects = async (subjects, name) => {
   const collectionRef = firestore.collection("semesters");
   const newDocRef = collectionRef.doc();
-  newDocRef.set({ subjects, name });
-  return newDocRef.id;
+  try {
+    await newDocRef.set({ subjects, name });
+    return newDocRef.id;
+  } catch (err) {
+    console.log("ooops, error");
+    return false;
+  }
+};
+
+export const searchSemesterByIdOrName = async searchTerm => {
+  const results = [];
+  const collectionRef = firestore.collection("semesters");
+  const queryId = collectionRef
+    .where(firebase.firestore.FieldPath.documentId(), ">=", searchTerm)
+    .where(
+      firebase.firestore.FieldPath.documentId(),
+      "<=",
+      searchTerm + "\uf8ff"
+    );
+  const queryName = collectionRef
+    .where("name", ">=", searchTerm)
+    .where("name", "<=", searchTerm + "\uf8ff");
+  try {
+    let snapshot = await queryId.get();
+    if (snapshot.empty) {
+      snapshot = await queryName.get();
+    }
+    snapshot.forEach(doc => {
+      results.push({ id: doc.id, name: doc.data().name });
+    });
+  } catch (error) {
+    console.log("Error getting documents: ", error);
+  }
+  return results;
 };
